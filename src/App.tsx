@@ -1,7 +1,10 @@
 import "./App.css";
+import { useState } from "react";
 
 function App() {
-  return <video src="/flower.mp4" controls />;
+  const [handlerToggle, setHandlerToggle] = useState(false);
+
+  return <video src="/simple-example" controls />;
 }
 
 export default App;
