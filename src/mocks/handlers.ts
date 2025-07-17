@@ -11,17 +11,6 @@ const simpleFlowerHandler = http.get("/simple-example", async ({ request }) => {
   });
 });
 
-const rangeFlowerOptions = http.options("/example", () => {
-  return new HttpResponse(null, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
-      "Access-Control-Allow-Headers": "*",
-    },
-  });
-});
-
 //const rangeFlowerHandler = http.get("/example", async ({ request }) => {
 //  console.log(request.headers.get("Range"));
 //  const easyVideo = await fetch("/flower.mp4").then((response) =>
@@ -60,8 +49,4 @@ const rangeFlowerHandler = http.get("/example", async ({ request }) => {
   });
 });
 
-export const handlers = [
-  simpleFlowerHandler,
-  rangeFlowerOptions,
-  rangeFlowerHandler,
-];
+export const handlers = [simpleFlowerHandler, rangeFlowerHandler];
