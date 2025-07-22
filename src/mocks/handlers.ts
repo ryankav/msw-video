@@ -22,7 +22,7 @@ const simpleFlowerHandler = http.get("/simple-example", async ({ request }) => {
 //  });
 //});
 
-const rangeFlowerOptions = http.options("*", () => {
+const rangeFlowerOptions = http.options("/example", () => {
   console.log("option called");
   return new HttpResponse(null, {
     status: 204,
@@ -36,7 +36,6 @@ const rangeFlowerOptions = http.options("*", () => {
 });
 
 const rangeFlowerHandler = http.get("/example", async ({ request }) => {
-  console.log(request.mode);
   const easyVideo = await fetch("/flower.mp4").then((response) =>
     response.arrayBuffer(),
   );
@@ -59,7 +58,7 @@ const rangeFlowerHandler = http.get("/example", async ({ request }) => {
       "Accept-Range": "bytes",
       "Content-Range": `bytes=${start}-${end}/${easyVideo.byteLength}`,
       "Content-Length": content.byteLength.toString(),
-      "Content-Type": "text/plain",
+      "Content-Type": "video/mp4",
     },
   });
 });
